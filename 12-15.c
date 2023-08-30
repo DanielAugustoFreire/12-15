@@ -8,10 +8,17 @@
 #include <time.h> 
 #include <stdlib.h>
 
-void TemPar(int mao[2][5])
+/*
+void TemPar(int bar[4][13], const char *naip[4], const char *fac[13])
 {
+    int i;
 
+    for(i=0;i<5;i++)
+    {
+
+    }
 }
+*/
 
 void enbaralhar(int bar[4][13])
 {
@@ -50,8 +57,6 @@ void destribur(int bar[4][13], const char *naip[4], const char *fac[13], int use
     }
 }
 
-
-
 int main()
 {
     const char *naipe[4] = {"Copas","Ouros","Paus","Espadas"};
@@ -65,5 +70,6 @@ int main()
 
     enbaralhar(baralho);
     destribur(baralho, naipe, face, mao);
+    //TemPar(mao, naipe, face);
 
-}
+    }
