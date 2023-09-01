@@ -10,7 +10,9 @@
 
 void determinar(int mao[2][5])
 {
-    int l,c, descobrirFace[2][5], descobrirNaip[2][5];
+    int l, c, i=0, descobrirFace[2][5], descobrirNaip[2][5];
+    int par[2]={0}, valete[2]={0}, as[2]={0};
+    int flush[2]={0};
 
     for(l=0;l<2;l++)
     {
@@ -18,10 +20,32 @@ void determinar(int mao[2][5])
         {
             descobrirFace[l][c] = mao[l][c] % 13;
             descobrirNaip[l][c] = mao[l][c] / 13;
+        
+        if(descobrirFace[l][c] % 2 == 1)
+            par[l]++;
+        if(descobrirFace[l][c] == 10)
+            valete[l]++;
+        if(descobrirFace[l][c] == 0)
+            as[l]++;
+        if(flush[l] == 0)
+            flush[l] = descobrirNaip[l][c];
+        if(flush[l] != descobrirNaip[l][c]);
+        flush[l] = 9999;
         }
     }
     
-
+    while(i<2)
+    {
+        printf("%d Mao:\n", i+1);
+        printf("Contem %d Par(es)\n", par[i]);
+        if(valete[i] == 3)
+            printf("Contem TRINCA\n");
+        if(as[i] == 4)
+            printf("Contem QUADRA\n");
+        if(flush[i] != 9999)
+            printf("Contem um FLUSH\n");
+        i++;
+    }
 
 }
 
