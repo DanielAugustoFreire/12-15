@@ -29,7 +29,7 @@ void determinar(int mao[2][5])
             as[l]++;
         if(flush[l] == 0)
             flush[l] = descobrirNaip[l][c];
-        if(flush[l] != descobrirNaip[l][c]);
+        if(flush[l] != descobrirNaip[l][c])
         flush[l] = 9999;
         }
     }
