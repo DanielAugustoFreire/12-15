@@ -8,20 +8,27 @@
 #include <time.h> 
 #include <stdlib.h>
 
-/*
-void TemPar(int bar[4][13], const char *naip[4], const char *fac[13])
+void determinar(int mao[2][5])
 {
-    int i;
+    int l,c, descobrirFace[2][5], descobrirNaip[2][5];
 
-    for(i=0;i<5;i++)
+    for(l=0;l<2;l++)
     {
-
+        for(c=0;c<5;c++)
+        {
+            descobrirFace[l][c] = mao[l][c] % 13;
+            descobrirNaip[l][c] = mao[l][c] / 13;
+        }
     }
+    
+
+
 }
-*/
 
 void enbaralhar(int bar[4][13])
 {
+    srand(time(NULL));
+
     int linha,coluna, carta;
     for(carta=0;carta<52;carta++)
     {
@@ -35,7 +42,6 @@ void enbaralhar(int bar[4][13])
         bar[linha][coluna] = carta;
     }
 }
-
 
 void destribur(int bar[4][13], const char *naip[4], const char *fac[13], int user[2][5])
 {
@@ -70,6 +76,6 @@ int main()
 
     enbaralhar(baralho);
     destribur(baralho, naipe, face, mao);
-    //TemPar(mao, naipe, face);
+    determinar(mao);
 
-    }
+}
