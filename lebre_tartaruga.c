@@ -15,7 +15,7 @@ void ImprimirMapa(int pos_t, int pos_c)
 {
     int i, morder;
 
-    Sleep(600);
+    Sleep(1);
     morder=0;
 
     system("cls");
@@ -30,10 +30,14 @@ void ImprimirMapa(int pos_t, int pos_c)
         else if(pos_t == i)
         {
             printf("T");
+            if(pos_t == 70)
+        	printf("\nTARTARUGA VENCEU !!!!YAY!!! NOVO");
         }
         else if(pos_c == i)
         {
             printf("L");
+            if(pos_c == 70)
+        	printf("\LEBRE VENCEU !!!!YAY!!! NOVO");
         }
         else if(pos_c >= 70 && i == 70)
         {
@@ -133,7 +137,7 @@ int main(void)
     printf("\n\nBANG ELES DISPARAM!!!");
     while(i == 0)
     {
-    Beep(1000, 200);
+    Beep(1000, 1);
     ImprimirMapa(c.posicao_tartaruga, c.posicao_coelho);
     if(c.posicao_tartaruga >= 70 || c.posicao_coelho >= 70)
         i=100;
