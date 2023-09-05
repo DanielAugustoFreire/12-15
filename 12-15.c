@@ -12,7 +12,7 @@ void determinar(int mao[2][5])
 {
     int l, c, i=0, descobrirFace[2][5], descobrirNaip[2][5];
     int par[2]={0}, valete[2]={0}, as[2]={0};
-    int flush[2]={0};
+    int flush[2]={0}, crescente[2]={0}, conf=0;
 
     for(l=0;l<2;l++)
     {
@@ -21,16 +21,34 @@ void determinar(int mao[2][5])
             descobrirFace[l][c] = mao[l][c] % 13;
             descobrirNaip[l][c] = mao[l][c] / 13;
         
-        if(descobrirFace[l][c] % 2 == 1)
-            par[l]++;
-        if(descobrirFace[l][c] == 10)
-            valete[l]++;
-        if(descobrirFace[l][c] == 0)
-            as[l]++;
-        if(flush[l] == 0)
-            flush[l] = descobrirNaip[l][c];
-        if(flush[l] != descobrirNaip[l][c])
-        flush[l] = 9999;
+            if(descobrirFace[l][c] % 2 == 1)
+                par[l]++;
+
+            if(descobrirFace[l][c] == 10)
+                valete[l]++;
+
+            if(descobrirFace[l][c] == 0)
+                as[l]++;
+
+            if(flush[l] == 0)
+                flush[l] = descobrirNaip[l][c];
+
+            if(flush[l] != descobrirNaip[l][c])
+                flush[l] = 9999;
+
+            if(crescente[l] == 0)
+            {
+                crescente[l] = descobrirFace[l][c];
+                conf = 1;
+            }
+                
+            if(conf == 1 && descobrirFace[l][c] - crescente[l] == 1 && flush != 9999)
+            {
+                crescente[l]=descobrirFace[l][c];
+            }
+            else{
+                conf=9999;
+            }
         }
     }
     
@@ -44,6 +62,8 @@ void determinar(int mao[2][5])
             printf("Contem QUADRA\n");
         if(flush[i] != 9999)
             printf("Contem um FLUSH\n");
+        if(conf != 9999)
+            printf("Contem uma sequencia");
         i++;
     }
 
