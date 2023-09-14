@@ -11,61 +11,55 @@
     	4
 */
 
-
-int direita(int posicao[2], const int labi[12][12], int direita[2]) {
-    int l=posicao[0],c=posicao[1];
-    int iso = 0; 
-
-    if(labi[l-1][c] == 1 && labi[l+1][c] == 1 && labi[l][c+1] == 0)
-        iso =  1;
-    else if(labi[l][c-1] == 1 && labi[l][c] == 1 && labi[l+1][c] == 0)
-        iso =  2;
-    else if(labi[l-1][c] == 1 && labi[l+1][c] == 1 && labi[l][c-1] == 0)
-        iso =  3;
-    else if(labi[l][c-1] == 1 && labi[l][c] == 1 && labi[l-1][c] == 0)
-        iso =  4;
-
-    if(iso == 1) {
-        direita[0] = l+1;
-        direita[1] = c;
-    }
-    else if(iso == 2) {
-        direita[0] = l;
-        direita[1] = c-1;
-    }
-    else if(iso == 3) {
-        direita[0] = l-1;
-        direita[1] = c;
-    }
-    else if(iso == 4) {
-        direita[0] = l;
-        direita[1] = c+1;
-    }
-
-    return iso;
-}
-
 int algoritmo(int posicao[2], const int labi[12][12], int direita[2])
 {
     int i, k;
 
 	if(posicao[0] == direita[0] - 1 && posicao[1] == direita[1] - 1)
-	if(posicao[0] == direita[0] - 1 && posicao[1] == direita[1] + 1)	
+    {
+        if(labi[posicao[1] + 1] == 0)
+            posicao[1]++;
+    }
+	if(posicao[0] == direita[0] - 1 && posicao[1] == direita[1] + 1)
+    {
+        if(labi[posicao[0] + 1] == 0)
+            posicao[0]++;
+    }	
 	if(posicao[0] == direita[0] - 1 && posicao[1] == direita[1])	
-	
-	
-	
-	
+    {
+        if(labi[posicao[1] + 1] == 0)
+            posicao[1]++;
+    }
+
+
+    
 	if(posicao[0] == direita[0] + 1 && posicao[1] == direita[1] - 1)
+    {
+        if(labi[posicao[1] - 1] == 0)
+            posicao[1]--;
+    }
 	if(posicao[0] == direita[0] + 1 && posicao[1] == direita[1] + 1)
+    {
+        if(labi[posicao[0] - 1] == 0)
+            posicao[0]--;
+    }
 	if(posicao[0] == direita[0] + 1 && posicao[1] == direita[1])
-	
-	
-	
+	{
+        if(labi[posicao[0] - 1] == 0)
+            posicao[0]--;
+    }
+
+
 	if(posicao[0] == direita[0] && posicao[1] == direita[1] - 1)
+    {
+        if(labi[posicao[1] - 1] == 0)
+            posicao[1]--;
+    }
 	if(posicao[0] == direita[0] && posicao[1] == direita[1] + 1)
-	if(posicao[0] == direita[0] && posicao[1] == direita[1])
-	
+    {
+        if(labi[posicao[0] + 1] == 0)
+        posicao[0]++;
+    }
 
 
 
@@ -114,10 +108,8 @@ int main()
         1,1,1,1,1,1,1,1,1,1,1,1
     };
     int pos[2] = {2,0};
-    int i=0, isso;
-    int direitinha[2];
-
-    isso = direita(pos, labirinto, direitinha);
+    int i=0;
+    int direitinha[2] = {3,0};
 
     while(i!=10)
     {
@@ -129,6 +121,4 @@ int main()
 
     return 0;
 }
-
-somado = somar(4 , 5);
 
